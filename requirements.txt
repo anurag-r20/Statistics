@@ -1,0 +1,27 @@
+# Core numerics and distributions
+numpy
+scipy
+sympy
+
+# Data handling and statistical models
+pandas
+statsmodels
+scikit-learn
+
+# Samplers and MCMC diagnostics
+emcee
+arviz
+
+# Optimisation solvers
+cvxpy
+
+# Speed-ups for hand-written samplers
+numba
+
+# Plotting
+matplotlib
+seaborn
+
+# Development
+ipykernel
+pytest
