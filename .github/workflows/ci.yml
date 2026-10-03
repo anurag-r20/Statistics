@@ -1,0 +1,40 @@
+name: CI
+
+# Triggered on both push and pull_request so that:
+#   - push:         catches regressions on every branch, not just main,
+#                   so failures are visible as soon as code is pushed
+#   - pull_request: runs again at merge time to catch conflicts introduced
+#                   by other branches landing on main in the interim
+on:
+  push:
+  pull_request:
+    branches: [main]
+
+# contents:read is the minimum needed to check out the repo.
+permissions:
+  contents: read
+
+jobs:
+  test:
+    # ubuntu-latest is the standard choice: it is faster to start than macOS or
+    # Windows runners, and the samplers have no platform-specific code.
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Pins Python to 3.12 to match the local development environment.
+      # Without pinning, GitHub may silently upgrade the runner's default
+      # Python and introduce "works locally, fails in CI" surprises.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # --cov=. measures which lines of the sampler modules are executed during the test run.
+      # --cov-report=term-missing prints a table in the CI log showing each file's
+      # coverage percentage and the specific line numbers not yet reached by any test.
+      - name: Run tests
+        run: pytest -v --cov=. --cov-report=term-missing
