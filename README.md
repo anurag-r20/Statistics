@@ -12,6 +12,7 @@ Includes:
 - Simulated annealing
 - Parallel tempering
 - Simulated tempering
+- Stochastic approximation Monte Carlo (SAMC), and simulated stochastic approximation annealing (SAA)
 
 ## Installation
 
@@ -48,8 +49,9 @@ pytest
 | [Simulated_Annealing.py](Simulated_Annealing.py) | `simulated_annealing`, `geometric_cooling`, `linear_cooling`, `logarithmic_cooling` |
 | [Parallel_Tempering.py](Parallel_Tempering.py) | `parallel_tempering`, `geometric_ladder` |
 | [Simulated_Tempering.py](Simulated_Tempering.py) | `simulated_tempering`, `geometric_ladder` |
+| [SAMC.py](SAMC.py) | `samc`, `stochastic_approximation_annealing`, `energy_regions`, `sqrt_cooling` |
 
-All samplers work with log densities and take a `seed` for reproducible runs. The annealing and tempering methods are built on `mh_step`, a single Metropolis-Hastings step at a chosen inverse temperature.
+All samplers work with log densities and take a `seed` for reproducible runs. The annealing, tempering and SAMC methods are built on `mh_step`, a single Metropolis-Hastings step.
 
 ```python
 import numpy as np
@@ -61,13 +63,14 @@ res = metropolis_hastings(log_target, x0=[0.0, 0.0], n_samples=10000,
 print(res.samples.mean(axis=0), res.acceptance_rate)
 ```
 
-**Tests** — [tests](tests) checks each sampler against targets with known answers, such as moments of a normal or gamma distribution, equal mass in the two modes of a bimodal mixture, and a conjugate posterior for double Metropolis-Hastings.
+**Tests** — [tests](tests) checks each sampler against targets with known answers, such as moments of a normal or gamma distribution, equal mass in the two modes of a bimodal mixture, a conjugate posterior for double Metropolis-Hastings, and exact subregion probabilities for SAMC.
 
 **Assignments** — Each assignment folder holds its scripts, figures, saved results and report.
 
 | Assignment | Topics | Report |
 |---|---|---|
 | [Assignment 3](Assignments/Assignment_3) | Simulated annealing (function minimisation, travelling salesman), simulated tempering (witch's hat), double Metropolis-Hastings (very-soft-core model) | [STAT546_HW3_Report.pdf](Assignments/Assignment_3/STAT546_HW3_Report.pdf) |
+| [Assignment 4](Assignments/Assignment_4) | SAMC and SAA (travelling salesman), SAMC for the moments of a normal mixture, SAMC for permutation p-values of the two-sample t-test | [STAT546_HW4_Report.pdf](Assignments/Assignment_4/STAT546_HW4_Report.pdf) |
 
 To reproduce an assignment, run its scripts from the repository root, for example:
 ```bash
