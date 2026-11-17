@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/github/license/anurag-r20/Statistics)](LICENSE)
 
 General Markov chain Monte Carlo samplers written from scratch, high-dimensional regression methods,
-stochastic approximation and EM, and the STAT 546 assignments solved with them.
+stochastic approximation and EM, stochastic gradient MCMC, and the STAT 546 assignments solved with them.
 
 Includes:
 - Metropolis-Hastings, with symmetric or asymmetric proposals
@@ -17,6 +17,7 @@ Includes:
 - Nodewise Lasso for Gaussian graphs, and desparsified Lasso for regression inference
 - Robbins-Monro stochastic approximation, and minibatch SGD for (ridge-penalised) logistic regression
 - EM for finite mixtures of univariate normal distributions
+- Stochastic gradient Langevin dynamics (SGLD) and stochastic gradient Hamiltonian Monte Carlo (SGHMC)
 
 ## Installation
 
@@ -76,7 +77,11 @@ provides `robbins_monro`, `minibatch_sgd`, `sgd_logistic_regression` and step-si
 [Expectation_Maximization.py](Expectation_Maximization.py) provides `normal_mixture_em` and
 `normal_mixture_loglik`.
 
-**Tests** — [tests](tests) checks each sampler against targets with known answers, such as moments of a normal or gamma distribution, equal mass in the two modes of a bimodal mixture, a conjugate posterior for double Metropolis-Hastings, and exact subregion probabilities for SAMC. Regression tests check analytical Lasso solutions, bias correction, standard errors and changes of units. Stochastic approximation and EM tests check the running-mean form of Robbins-Monro, the penalised SGD step, agreement with scikit-learn's ridge logistic regression, hand-computed EM steps and the monotone EM log-likelihood.
+**Stochastic gradient MCMC** — [Stochastic_Gradient_MCMC.py](Stochastic_Gradient_MCMC.py) provides `sgld`,
+`sghmc` (with an optional gradient-noise correction), `minibatch_gradient`, `gradient_noise_variance` and
+gradients for Bayesian logistic and linear regression.
+
+**Tests** — [tests](tests) checks each sampler against targets with known answers, such as moments of a normal or gamma distribution, equal mass in the two modes of a bimodal mixture, a conjugate posterior for double Metropolis-Hastings, and exact subregion probabilities for SAMC. Regression tests check analytical Lasso solutions, bias correction, standard errors and changes of units. Stochastic approximation and EM tests check the running-mean form of Robbins-Monro, the penalised SGD step, agreement with scikit-learn's ridge logistic regression, hand-computed EM steps and the monotone EM log-likelihood. Stochastic gradient MCMC tests check the exact stationary variances of SGLD and SGHMC on a Gaussian target, unbiased minibatch gradients and the conjugate linear-regression posterior.
 
 **Assignments** — Each assignment folder holds its scripts, figures, saved results and report.
 
@@ -86,6 +91,7 @@ provides `robbins_monro`, `minibatch_sgd`, `sgd_logistic_regression` and step-si
 | [Assignment 4](Assignments/Assignment_4) | SAMC and SAA (travelling salesman), SAMC for the moments of a normal mixture, SAMC for permutation p-values of the two-sample t-test | [STAT546_HW4_Report.pdf](Assignments/Assignment_4/STAT546_HW4_Report.pdf) |
 | [Assignment 5](Assignments/Assignment_5) | Gaussian graph learning by nodewise Lasso, high-dimensional inference by desparsified Lasso | [STAT546_HW5_Report.pdf](Assignments/Assignment_5/STAT546_HW5_Report.pdf) |
 | [Assignment 6](Assignments/Assignment_6) | Robbins-Monro step-size schedules, minibatch SGD for logistic regression, penalised SGD (derivation), EM for normal mixtures, IRO for missing covariates (formulation) | [STAT546_HW6_Report.pdf](Assignments/Assignment_6/STAT546_HW6_Report.pdf) |
+| [Assignment 7](Assignments/Assignment_7) | SGLD for Bayesian logistic regression against full-data MCMC, SGHMC derivation and comparison with SGLD, numerical study of minibatch size, learning rate, friction and iterations | [STAT546_HW7_Report.pdf](Assignments/Assignment_7/STAT546_HW7_Report.pdf) |
 
 To reproduce an assignment, run its scripts from the repository root, for example:
 ```bash

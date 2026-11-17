@@ -1,0 +1,155 @@
+{
+  "settings": {
+    "n_train": 5000,
+    "d": 10,
+    "prior_var": 10.0,
+    "iterations": 50000,
+    "burn_in": 5000,
+    "seed": 548,
+    "decreasing": "5e-4 (1 + t/1000)^-0.55"
+  },
+  "reference": {
+    "acceptance": 0.2649157894736842,
+    "cpu_time": 79.32773062700001,
+    "test_accuracy": 0.7608,
+    "mean": [
+      -0.45533816938910476,
+      0.9995216196811717,
+      -0.9503238476393165,
+      0.46069227776564364,
+      -0.42068435119946135,
+      0.23305759899827408,
+      -0.2298847267188401,
+      0.04100906947266334,
+      0.011470484923083599,
+      0.04133497936977224
+    ],
+    "sd": [
+      0.03491315016822146,
+      0.04190038805195356,
+      0.04076070528437959,
+      0.035881984674090144,
+      0.03670619085981421,
+      0.03454877829451025,
+      0.03474898950010782,
+      0.03423462697636697,
+      0.03446000113319733,
+      0.034078425129690136
+    ],
+    "samples": 190000
+  },
+  "gradient_noise_variance_b100": [
+    45554.8922808426,
+    31970.404186912274,
+    34891.65476832218,
+    41077.1053683821,
+    40029.44827796194,
+    41535.12754901101,
+    41927.414171225966,
+    44421.26959691018,
+    41753.43541053735,
+    43995.01355982011
+  ],
+  "results": {
+    "batch_size": {
+      "b = 10": {
+        "config": {
+          "batch_size": 10,
+          "step": 0.0001
+        },
+        "mean_error": 0.425074183033465,
+        "sd_ratio": 3.3526465040016618,
+        "iterations_to_posterior": 86,
+        "test_accuracy": 0.7612,
+        "cpu_time": 1.8762243390000002,
+        "predicted_sd_ratio": 3.3728697298385883
+      },
+      "b = 100": {
+        "config": {
+          "batch_size": 100,
+          "step": 0.0001
+        },
+        "mean_error": 0.05120857225598538,
+        "sd_ratio": 1.395728256572973,
+        "iterations_to_posterior": 68,
+        "test_accuracy": 0.7602,
+        "cpu_time": 2.1578127150000004,
+        "predicted_sd_ratio": 1.4340466415835693
+      },
+      "b = 1000": {
+        "config": {
+          "batch_size": 1000,
+          "step": 0.0001
+        },
+        "mean_error": 0.027577770139321313,
+        "sd_ratio": 1.0486793815535937,
+        "iterations_to_posterior": 88,
+        "test_accuracy": 0.7608,
+        "cpu_time": 6.5188915640000005,
+        "predicted_sd_ratio": 1.0599546477816049
+      },
+      "b = 5000": {
+        "config": {
+          "batch_size": 5000,
+          "step": 0.0001
+        },
+        "mean_error": 0.035084373583211405,
+        "sd_ratio": 1.0021441924919057,
+        "iterations_to_posterior": 73,
+        "test_accuracy": 0.7604,
+        "cpu_time": 21.559053881,
+        "predicted_sd_ratio": 1.0098113343627877
+      }
+    },
+    "step_size": {
+      "constant 2e-5": {
+        "config": {
+          "batch_size": 100,
+          "step": 2e-05
+        },
+        "mean_error": 0.0907627460692731,
+        "sd_ratio": 1.0625400164008814,
+        "iterations_to_posterior": 355,
+        "test_accuracy": 0.7602,
+        "cpu_time": 2.3010044449999967,
+        "predicted_sd_ratio": 1.0991676180698406
+      },
+      "constant 1e-4": {
+        "config": {
+          "batch_size": 100,
+          "step": 0.0001
+        },
+        "mean_error": 0.05120857225598538,
+        "sd_ratio": 1.395728256572973,
+        "iterations_to_posterior": 68,
+        "test_accuracy": 0.7602,
+        "cpu_time": 2.3232658190000066,
+        "predicted_sd_ratio": 1.4340466415835693
+      },
+      "constant 5e-4": {
+        "config": {
+          "batch_size": 100,
+          "step": 0.0005
+        },
+        "mean_error": 0.185809800341639,
+        "sd_ratio": 2.5621283691020453,
+        "iterations_to_posterior": 19,
+        "test_accuracy": 0.7608,
+        "cpu_time": 2.250146364999999,
+        "predicted_sd_ratio": 2.5949261773409957
+      },
+      "decreasing": {
+        "config": {
+          "batch_size": 100,
+          "step": "decreasing"
+        },
+        "mean_error": 0.05441878376821577,
+        "sd_ratio": 1.3993463240943025,
+        "iterations_to_posterior": 19,
+        "test_accuracy": 0.7604,
+        "cpu_time": 2.0976044579999993,
+        "predicted_sd_ratio": null
+      }
+    }
+  }
+}
